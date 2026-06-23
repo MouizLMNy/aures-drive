@@ -1,0 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-navy antialiased;
+    font-feature-settings: "kern", "liga";
+  }
+
+  ::selection {
+    @apply bg-azur-500 text-white;
+  }
+
+  /* Décalage pour l'en-tête fixe lors des ancres */
+  :target {
+    scroll-margin-top: 6rem;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-shine bg-clip-text text-transparent;
+  }
+
+  /* Effet de grille subtil pour les fonds premium */
+  .bg-grid {
+    background-image: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.04) 1px,
+        transparent 1px
+      ),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+/* Barre de défilement discrète (desktop) */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #06121f;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #1c3c73;
+    border-radius: 9999px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #2b5191;
+  }
+}
