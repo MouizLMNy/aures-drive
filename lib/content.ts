@@ -61,7 +61,7 @@ export const SERVICES: Service[] = [
   {
     title: "Transport de groupe",
     description:
-      "Jusqu'à 7 passagers à bord de notre Mercedes V-Class spacieuse, avec grand coffre et climatisation. Idéal famille, collègues ou amis.",
+      "Jusqu'à 8 passagers à bord de notre Mercedes V-Class spacieuse, avec grand coffre et climatisation. Idéal famille, collègues ou amis.",
     icon: Users,
     whatsappMessage:
       "Bonjour, je souhaite réserver un transport de groupe avec Aures Drive.",
@@ -142,7 +142,7 @@ export const ADVANTAGES: Advantage[] = [
   {
     title: "Véhicules confortables",
     description:
-      "Berlines et Mercedes V-Class récentes, propres et spacieuses, jusqu'à 7 passagers.",
+      "Berlines et Mercedes V-Class récentes, propres et spacieuses, jusqu'à 8 passagers.",
   },
   {
     title: "Prix transparents",
@@ -187,7 +187,7 @@ export const TESTIMONIALS: Testimonial[] = [
  */
 export const AURES_TOUR = {
   duration: "2 heures de découverte",
-  capacity: "Jusqu'à 7 passagers",
+  capacity: "Jusqu'à 8 passagers",
   price: "40 € / personne",
   intro:
     "Découvrez Marseille autrement. Aures Drive vous propose un circuit touristique premium à bord de notre Mercedes V-Class, avec un chauffeur privé attentionné. Monuments, histoire et panoramas : tout ce que la Cité Phocéenne a de plus beau, à votre rythme.",

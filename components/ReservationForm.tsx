@@ -111,7 +111,7 @@ export function ReservationForm() {
           className={`${fieldClass} appearance-none`}
           aria-label="Nombre de passagers"
         >
-          {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+          {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
             <option key={n} value={String(n)}>
               {n} passager{n > 1 ? "s" : ""}
             </option>

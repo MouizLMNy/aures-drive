@@ -94,7 +94,7 @@ export default function HomePage() {
                 {[
                   { icon: Clock, label: "24h/24" },
                   { icon: Car, label: "Mercedes" },
-                  { icon: Users, label: "7 places" },
+                  { icon: Users, label: "8 places" },
                   { icon: ShieldCheck, label: "Agréé" },
                 ].map(({ icon: Icon, label }) => (
                   <div
