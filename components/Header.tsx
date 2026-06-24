@@ -1,8 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { Menu, X, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { Container } from "./Container";
@@ -10,20 +8,17 @@ import { WhatsAppButton } from "./WhatsAppButton";
 import { SITE } from "@/lib/site";
 
 const NAV = [
-  { label: "Accueil", href: "/" },
-  { label: "Services", href: "/nos-services" },
-  { label: "Aéroport", href: "/transfert-aeroport" },
-  { label: "Gare", href: "/transfert-gare" },
-  { label: "Entreprises", href: "/entreprises" },
-  { label: "À propos", href: "/a-propos" },
-  { label: "FAQ", href: "/faq" },
-  { label: "Contact", href: "/contact" },
+  { label: "Accueil", href: "/#accueil" },
+  { label: "Services", href: "/#services" },
+  { label: "Pourquoi nous", href: "/#pourquoi" },
+  { label: "Tarifs", href: "/#tarifs" },
+  { label: "Avis", href: "/#avis" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const pathname = usePathname();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -31,14 +26,6 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  // Ferme le menu mobile lors d'un changement de page.
-  useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
-
-  const isActive = (href: string) =>
-    href === "/" ? pathname === "/" : pathname.startsWith(href);
 
   return (
     <header
@@ -53,17 +40,13 @@ export function Header() {
 
         <nav className="hidden items-center gap-1 lg:flex">
           {NAV.map((item) => (
-            <Link
+            <a
               key={item.href}
               href={item.href}
-              className={`rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
-                isActive(item.href)
-                  ? "text-white"
-                  : "text-azur-100/80 hover:text-white"
-              }`}
+              className="rounded-full px-3.5 py-2 text-sm font-medium text-azur-100/80 transition-colors hover:text-white"
             >
               {item.label}
-            </Link>
+            </a>
           ))}
         </nav>
 
@@ -97,17 +80,14 @@ export function Header() {
       >
         <Container className="flex flex-col gap-1 py-4">
           {NAV.map((item) => (
-            <Link
+            <a
               key={item.href}
               href={item.href}
-              className={`rounded-lg px-4 py-3 text-base font-medium transition-colors ${
-                isActive(item.href)
-                  ? "bg-white/10 text-white"
-                  : "text-azur-100/90 hover:bg-white/5 hover:text-white"
-              }`}
+              onClick={() => setOpen(false)}
+              className="rounded-lg px-4 py-3 text-base font-medium text-azur-100/90 transition-colors hover:bg-white/5 hover:text-white"
             >
               {item.label}
-            </Link>
+            </a>
           ))}
           <div className="mt-3 flex flex-col gap-3 border-t border-white/10 pt-4">
             <a

@@ -3,22 +3,29 @@ import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
 import { SITE, whatsappLink } from "@/lib/site";
-import { SERVICES, ZONES } from "@/lib/content";
 
 const YEAR = new Date().getFullYear();
+
+const QUICK_LINKS = [
+  { label: "Accueil", href: "/#accueil" },
+  { label: "Services", href: "/#services" },
+  { label: "Tarifs", href: "/#tarifs" },
+  { label: "Avis clients", href: "/#avis" },
+  { label: "Contact", href: "/#contact" },
+];
 
 export function Footer() {
   return (
     <footer className="relative overflow-hidden bg-gradient-navy text-azur-100">
       <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-azur-500/10 blur-3xl" />
       <Container className="relative py-16">
-        <div className="grid gap-12 lg:grid-cols-4">
+        <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
           {/* Marque */}
-          <div className="lg:col-span-1">
+          <div>
             <Logo variant="light" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-azur-100/80">
               Chauffeur privé VTC premium à Marseille et alentours. Transferts,
-              mise à disposition et longue distance, 24h/24 et 7j/7.
+              déplacements pro et longue distance, 24h/24 et 7j/7.
             </p>
             <a
               href={whatsappLink()}
@@ -31,34 +38,17 @@ export function Footer() {
             </a>
           </div>
 
-          {/* Services */}
+          {/* Navigation */}
           <div>
             <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
-              Nos services
+              Navigation
             </h3>
             <ul className="mt-5 space-y-3 text-sm">
-              {SERVICES.map((s) => (
-                <li key={s.slug}>
-                  <Link
-                    href={`/${s.slug}`}
-                    className="text-azur-100/80 transition-colors hover:text-white"
-                  >
-                    {s.title}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Zones */}
-          <div>
-            <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
-              Zones desservies
-            </h3>
-            <ul className="mt-5 grid grid-cols-1 gap-3 text-sm">
-              {ZONES.map((z) => (
-                <li key={z} className="text-azur-100/80">
-                  {z}
+              {QUICK_LINKS.map((l) => (
+                <li key={l.href}>
+                  <a href={l.href} className="text-azur-100/80 transition-colors hover:text-white">
+                    {l.label}
+                  </a>
                 </li>
               ))}
             </ul>
@@ -92,23 +82,39 @@ export function Footer() {
               </li>
             </ul>
           </div>
+
+          {/* Légal */}
+          <div>
+            <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
+              Informations
+            </h3>
+            <ul className="mt-5 space-y-3 text-sm">
+              <li>
+                <Link href="/mentions-legales" className="text-azur-100/80 hover:text-white">
+                  Mentions légales
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/politique-de-confidentialite"
+                  className="text-azur-100/80 hover:text-white"
+                >
+                  Politique de confidentialité
+                </Link>
+              </li>
+              <li>
+                <Link href="/cgv" className="text-azur-100/80 hover:text-white">
+                  CGV
+                </Link>
+              </li>
+            </ul>
+          </div>
         </div>
 
-        <div className="mt-14 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 text-xs text-azur-100/60 sm:flex-row">
+        <div className="mt-14 border-t border-white/10 pt-8 text-center text-xs text-azur-100/60">
           <p>
             © {YEAR} {SITE.name}. Tous droits réservés.
           </p>
-          <div className="flex items-center gap-6">
-            <Link href="/mentions-legales" className="hover:text-white">
-              Mentions légales
-            </Link>
-            <Link href="/cgv" className="hover:text-white">
-              CGV
-            </Link>
-            <Link href="/contact" className="hover:text-white">
-              Contact
-            </Link>
-          </div>
         </div>
       </Container>
     </footer>

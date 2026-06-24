@@ -1,0 +1,50 @@
+============================================================
+  PHOTOS DU SITE AURES DRIVE — OÙ LES METTRE
+============================================================
+
+Dépose tes photos DANS CE DOSSIER (public/images/) en respectant
+EXACTEMENT les noms ci-dessous. Les photos s'afficheront alors
+automatiquement sur le site (aucune autre manipulation nécessaire).
+
+Tant qu'une photo est absente, un joli dégradé bleu s'affiche à sa
+place : le site reste donc impeccable même sans toutes les images.
+
+------------------------------------------------------------
+  FICHIERS ATTENDUS
+------------------------------------------------------------
+
+1. hero.jpg
+   -> Image de fond du haut de page (Hero).
+   -> Idéal : une voiture VTC premium (Mercedes), vue élégante.
+   -> Format conseillé : paysage, ~1920x1080 px.
+
+2. saint-charles.jpg
+   -> Gare Saint-Charles (Marseille).
+
+3. aeroport.jpg
+   -> Aéroport Marseille-Provence.
+
+4. calanques.jpg
+   -> Les Calanques de Marseille.
+
+5. cassis.jpg
+   -> Cassis (port / calanques).
+
+6. la-ciotat.jpg
+   -> La Ciotat.
+
+------------------------------------------------------------
+  CONSEILS
+------------------------------------------------------------
+
+- Format .jpg de préférence (plus léger). Le .png fonctionne aussi
+  mais il faudra alors changer l'extension dans lib/content.ts.
+- Garde des images < 400 Ko chacune pour un site rapide
+  (tu peux les compresser sur https://squoosh.app ).
+- Pour les destinations, privilégie des photos au format paysage
+  ou carré, lumineuses et de bonne qualité.
+
+Après avoir ajouté tes photos :
+  1) lance "npm run build"
+  2) re-téléverse le dossier /out sur Hostinger
+============================================================

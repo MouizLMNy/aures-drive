@@ -8,7 +8,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/mentions-legales", "/cgv"],
+      disallow: ["/mentions-legales", "/politique-de-confidentialite", "/cgv"],
     },
     sitemap: `${SITE.url}/sitemap.xml`,
   };

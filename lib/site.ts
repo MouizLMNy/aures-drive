@@ -7,6 +7,7 @@
 export const SITE = {
   name: "Aures Drive",
   tagline: "Votre chauffeur privé VTC à Marseille",
+  slogan: "Réservez votre VTC en quelques clics",
   description:
     "Aures Drive — service de chauffeur privé VTC premium à Marseille et alentours. Transferts aéroport et gare, mise à disposition, longue distance et transport d'affaires. Réservation simple via WhatsApp, 24h/24 et 7j/7.",
   // ⚠️ À remplacer par ton domaine définitif avant la mise en ligne.
