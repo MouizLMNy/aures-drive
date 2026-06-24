@@ -18,6 +18,7 @@ import { WhatsAppButton } from "@/components/WhatsAppButton";
 import { SectionHeading } from "@/components/SectionHeading";
 import { ReservationForm } from "@/components/ReservationForm";
 import { DestinationCard } from "@/components/DestinationCard";
+import { MarseilleBackdrop } from "@/components/MarseilleBackdrop";
 import { Reveal } from "@/components/Reveal";
 import { SITE, whatsappLink } from "@/lib/site";
 import {
@@ -127,6 +128,11 @@ export default function HomePage() {
           </div>
         </Container>
       </section>
+
+      {/* ─── Bandeau illustration Notre-Dame de la Garde & Marseille ─── */}
+      <div className="relative overflow-hidden bg-gradient-navy">
+        <MarseilleBackdrop className="block w-full" />
+      </div>
 
       {/* ════════════════ 2. SERVICES ════════════════ */}
       <section id="services" className="scroll-mt-24 py-20 sm:py-28">
