@@ -5,9 +5,13 @@
 
 import {
   Plane,
+  TrainFront,
   Briefcase,
-  Route,
+  Sparkles,
+  Users,
   Clock4,
+  Camera,
+  Route,
   type LucideIcon,
 } from "lucide-react";
 
@@ -23,36 +27,68 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    title: "Transferts aéroports & gares",
+    title: "Transfert aéroport",
     description:
-      "Aéroport Marseille-Provence et gare Saint-Charles. Suivi de votre vol ou train, accueil personnalisé et ponctualité garantie.",
+      "Prise en charge au terminal, pancarte nominative et suivi de votre vol en temps réel. Aéroport Marseille-Provence et toute la région, 24h/24.",
     icon: Plane,
     whatsappMessage:
-      "Bonjour, je souhaite réserver un transfert aéroport ou gare avec Aures Drive.",
+      "Bonjour, je souhaite réserver un transfert aéroport avec Aures Drive.",
   },
   {
-    title: "Déplacements professionnels",
+    title: "Transfert gare",
     description:
-      "Transferts de dirigeants, clients VIP et rendez-vous d'affaires. Chauffeur discret, ponctuel et facturation adaptée.",
+      "Liaison ponctuelle depuis et vers la gare Saint-Charles. Suivi des horaires de train et prise en charge à quai facilitée.",
+    icon: TrainFront,
+    whatsappMessage:
+      "Bonjour, je souhaite réserver un transfert gare avec Aures Drive.",
+  },
+  {
+    title: "Transport d'affaires",
+    description:
+      "Déplacements de dirigeants et clients VIP. Discrétion et silence garantis, chauffeur en tenue et facturation adaptée aux entreprises.",
     icon: Briefcase,
     whatsappMessage:
-      "Bonjour, je souhaite réserver un déplacement professionnel avec Aures Drive.",
+      "Bonjour, je souhaite réserver un transport d'affaires avec Aures Drive.",
   },
   {
-    title: "Trajets longue distance",
+    title: "Événements & mariages",
     description:
-      "Aix, Avignon, Nice, Lyon, Montpellier et toute la France au départ de Marseille, dans un confort premium.",
-    icon: Route,
+      "Mariage, gala, soirée privée ou grande occasion. Véhicule élégant, chauffeur en tenue et service attentionné pour rendre votre journée parfaite.",
+    icon: Sparkles,
     whatsappMessage:
-      "Bonjour, je souhaite réserver un trajet longue distance avec Aures Drive.",
+      "Bonjour, je souhaite organiser un transport événementiel (mariage / soirée) avec Aures Drive.",
+  },
+  {
+    title: "Transport de groupe",
+    description:
+      "Jusqu'à 7 passagers à bord de notre Mercedes V-Class spacieuse, avec grand coffre et climatisation. Idéal famille, collègues ou amis.",
+    icon: Users,
+    whatsappMessage:
+      "Bonjour, je souhaite réserver un transport de groupe avec Aures Drive.",
   },
   {
     title: "Mise à disposition",
     description:
-      "Un chauffeur dédié à l'heure ou à la journée pour tous vos déplacements, en toute liberté et discrétion.",
+      "Un chauffeur privatisé à l'heure, à la demi-journée ou à la journée complète, pour tous vos déplacements en toute liberté.",
     icon: Clock4,
     whatsappMessage:
       "Bonjour, je souhaite réserver une mise à disposition avec Aures Drive.",
+  },
+  {
+    title: "Visite touristique",
+    description:
+      "Découvrez Marseille et ses environs avec un chauffeur attentionné : Vieux-Port, Calanques, Cassis… Un circuit sur-mesure, à votre rythme.",
+    icon: Camera,
+    whatsappMessage:
+      "Bonjour, je souhaite réserver une visite touristique de Marseille avec Aures Drive.",
+  },
+  {
+    title: "Longue distance",
+    description:
+      "Aix, Avignon, Nice, Lyon, Montpellier et toute la France au départ de Marseille, dans un confort premium et sur devis transparent.",
+    icon: Route,
+    whatsappMessage:
+      "Bonjour, je souhaite réserver un trajet longue distance avec Aures Drive.",
   },
 ];
 
