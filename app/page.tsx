@@ -10,6 +10,8 @@ import {
   MessageCircle,
   MapPin,
   Quote,
+  Camera,
+  Check,
 } from "lucide-react";
 import { Container } from "@/components/Container";
 import { WhatsAppButton } from "@/components/WhatsAppButton";
@@ -24,6 +26,7 @@ import {
   DESTINATIONS,
   TARIFS,
   TESTIMONIALS,
+  AURES_TOUR,
 } from "@/lib/content";
 
 export default function HomePage() {
@@ -277,6 +280,96 @@ export default function HomePage() {
               </div>
             </div>
           </Reveal>
+        </Container>
+      </section>
+
+      {/* ════════════════ AURES TOUR ════════════════ */}
+      <section
+        id="aures-tour"
+        className="relative scroll-mt-24 overflow-hidden bg-gradient-navy py-20 sm:py-28"
+      >
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-20"
+          style={{ backgroundImage: "url(/images/calanques.jpg)" }}
+          aria-hidden="true"
+        />
+        <div className="bg-grid absolute inset-0 opacity-40" aria-hidden="true" />
+        <div
+          className="pointer-events-none absolute -right-32 top-10 h-[28rem] w-[28rem] rounded-full bg-azur-500/20 blur-3xl"
+          aria-hidden="true"
+        />
+
+        <Container className="relative">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            {/* Présentation */}
+            <Reveal>
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-azur-100 backdrop-blur">
+                <Camera className="h-4 w-4" />
+                Aures Tour
+              </span>
+              <h2 className="mt-5 font-display text-3xl font-bold leading-tight text-white sm:text-4xl">
+                Visitez Marseille avec votre chauffeur privé
+              </h2>
+              <p className="mt-5 text-base leading-relaxed text-azur-100/90 sm:text-lg">
+                {AURES_TOUR.intro}
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                {[
+                  { icon: Clock, label: AURES_TOUR.duration },
+                  { icon: Users, label: AURES_TOUR.capacity },
+                  { icon: MapPin, label: "Itinéraire sur-mesure" },
+                ].map(({ icon: Icon, label }) => (
+                  <span
+                    key={label}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white backdrop-blur"
+                  >
+                    <Icon className="h-4 w-4 text-azur-400" />
+                    {label}
+                  </span>
+                ))}
+              </div>
+
+              <div className="mt-8 flex flex-col items-start gap-4 sm:flex-row sm:items-center">
+                <div className="rounded-2xl border border-white/15 bg-white/5 px-6 py-4 backdrop-blur">
+                  <span className="block text-xs uppercase tracking-wider text-azur-100/70">
+                    À partir de
+                  </span>
+                  <span className="font-display text-2xl font-bold text-white">
+                    {AURES_TOUR.price}
+                  </span>
+                </div>
+                <WhatsAppButton message={AURES_TOUR.whatsappMessage} size="lg">
+                  Réserver le Aures Tour
+                </WhatsAppButton>
+              </div>
+            </Reveal>
+
+            {/* Itinéraire */}
+            <Reveal delay={120}>
+              <div className="rounded-3xl border border-white/10 bg-white/5 p-7 backdrop-blur sm:p-8">
+                <h3 className="font-display text-xl font-bold text-white">
+                  Votre itinéraire
+                </h3>
+                <ol className="mt-6 space-y-4">
+                  {AURES_TOUR.stops.map((stop, i) => (
+                    <li key={stop} className="flex items-start gap-4">
+                      <span className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-gradient-shine text-sm font-bold text-navy-950">
+                        {i + 1}
+                      </span>
+                      <span className="pt-1 text-sm font-medium text-azur-100">
+                        {stop}
+                      </span>
+                    </li>
+                  ))}
+                </ol>
+                <p className="mt-6 flex items-center gap-2 border-t border-white/10 pt-5 text-sm text-azur-100/80">
+                  <Check className="h-4 w-4 text-azur-400" />
+                  Circuit personnalisable selon vos envies
+                </p>
+              </div>
+            </Reveal>
+          </div>
         </Container>
       </section>
 

@@ -10,8 +10,8 @@ import { SITE } from "@/lib/site";
 const NAV = [
   { label: "Accueil", href: "/#accueil" },
   { label: "Services", href: "/#services" },
-  { label: "Pourquoi nous", href: "/#pourquoi" },
   { label: "Tarifs", href: "/#tarifs" },
+  { label: "Aures Tour", href: "/#aures-tour" },
   { label: "Avis", href: "/#avis" },
   { label: "Contact", href: "/#contact" },
 ];

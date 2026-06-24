@@ -117,12 +117,16 @@ export const DESTINATIONS: Destination[] = [
 export type Tarif = { from: string; to: string; price: string };
 
 export const TARIFS: Tarif[] = [
-  { from: "Marseille centre", to: "Aéroport Marseille-Provence", price: "55 €" },
-  { from: "Marseille centre", to: "Gare Saint-Charles", price: "25 €" },
-  { from: "Marseille", to: "Aix-en-Provence", price: "60 €" },
-  { from: "Marseille", to: "Aubagne", price: "45 €" },
-  { from: "Marseille", to: "Cassis", price: "70 €" },
-  { from: "Marseille", to: "La Ciotat", price: "90 €" },
+  { from: "Marseille", to: "Aéroport Marseille-Provence", price: "70 €" },
+  { from: "Marseille", to: "Aix-en-Provence", price: "65 €" },
+  { from: "Marseille", to: "Cassis", price: "45 €" },
+  { from: "Marseille", to: "La Ciotat", price: "55 €" },
+  { from: "Marseille", to: "Aubagne", price: "38 €" },
+  { from: "Marseille", to: "Martigues", price: "50 €" },
+  { from: "Marseille", to: "Salon-de-Provence", price: "80 €" },
+  { from: "Marseille", to: "Arles", price: "95 €" },
+  { from: "Marseille", to: "Avignon", price: "150 €" },
+  { from: "Marseille", to: "Nice / Cannes", price: "260 €" },
 ];
 
 /* ─────────────────────── POURQUOI NOUS CHOISIR ─────────────────── */
@@ -174,9 +178,27 @@ export const TESTIMONIALS: Testimonial[] = [
     text: "Service haut de gamme pour mes déplacements professionnels à Marseille. Discrétion et ponctualité au rendez-vous.",
     rating: 5,
   },
-  {
-    name: "Nadia M.",
-    text: "Un grand merci pour le trajet jusqu'à Cassis. Confort, sécurité et gentillesse. Je referai appel à Aures Drive.",
-    rating: 5,
-  },
 ];
+
+/* ───────────────────────── AURES TOUR ─────────────────────────── */
+/**
+ * Circuit touristique premium de Marseille (équivalent du "Jibni Tour").
+ * Prix indicatif à ajuster.
+ */
+export const AURES_TOUR = {
+  duration: "2 heures de découverte",
+  capacity: "Jusqu'à 7 passagers",
+  price: "40 € / personne",
+  intro:
+    "Découvrez Marseille autrement. Aures Drive vous propose un circuit touristique premium à bord de notre Mercedes V-Class, avec un chauffeur privé attentionné. Monuments, histoire et panoramas : tout ce que la Cité Phocéenne a de plus beau, à votre rythme.",
+  stops: [
+    "Vieux-Port — point de départ emblématique",
+    "Notre-Dame de la Garde — panorama 360° sur la ville",
+    "Corniche Kennedy — promenade côtière face aux îles du Frioul",
+    "Cathédrale de la Major — architecture romano-byzantine",
+    "Palais Longchamp — chef-d'œuvre et jardins",
+    "MuCEM & stade Vélodrome — culture et passion marseillaises",
+  ],
+  whatsappMessage:
+    "Bonjour, je souhaite réserver le Aures Tour (circuit touristique de Marseille).",
+};
