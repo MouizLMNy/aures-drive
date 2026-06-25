@@ -56,6 +56,23 @@ export const SERVICES: Service[] = [
   },
 ];
 
+/* ─────────────────── LIEUX FRÉQUENTS (réservation) ───────────────── */
+/**
+ * Suggestions de lieux affichées sous les champs Départ / Arrivée du
+ * formulaire de réservation. "short" = texte du bouton, "full" = adresse
+ * enregistrée dans le message WhatsApp. Modifie librement cette liste.
+ */
+export type Place = { short: string; full: string };
+
+export const POPULAR_PLACES: Place[] = [
+  { short: "Aéroport", full: "Aéroport Marseille-Provence (Marignane)" },
+  { short: "Gare St-Charles", full: "Gare Saint-Charles, Marseille" },
+  { short: "Vieux-Port", full: "Vieux-Port, Marseille" },
+  { short: "Notre-Dame de la Garde", full: "Notre-Dame de la Garde, Marseille" },
+  { short: "Les Terrasses du Port", full: "Les Terrasses du Port, Marseille" },
+  { short: "Grand Littoral", full: "Centre commercial Grand Littoral, Marseille" },
+];
+
 /* ───────────────────────── DESTINATIONS ───────────────────────── */
 /**
  * Destinations mises en avant avec photo.

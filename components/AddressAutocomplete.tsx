@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { MapPin, Loader2 } from "lucide-react";
+import { type Place } from "@/lib/content";
 
 type Suggestion = {
   label: string;
@@ -19,12 +20,14 @@ export function AddressAutocomplete({
   placeholder,
   ariaLabel,
   required = false,
+  quickPicks,
 }: {
   value: string;
   onChange: (value: string) => void;
   placeholder: string;
   ariaLabel: string;
   required?: boolean;
+  quickPicks?: Place[];
 }) {
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [open, setOpen] = useState(false);
@@ -158,6 +161,22 @@ export function AddressAutocomplete({
             </li>
           ))}
         </ul>
+      )}
+
+      {quickPicks && quickPicks.length > 0 && (
+        <div className="mt-2 flex flex-wrap gap-1.5">
+          {quickPicks.map((p) => (
+            <button
+              type="button"
+              key={p.full}
+              onClick={() => select(p.full)}
+              className="inline-flex items-center gap-1 rounded-full border border-navy-200 bg-navy-50/60 px-3 py-1 text-xs font-medium text-navy-700 transition-colors hover:border-azur-300 hover:bg-azur-50 hover:text-azur-700"
+            >
+              <MapPin className="h-3 w-3 text-azur-500" />
+              {p.short}
+            </button>
+          ))}
+        </div>
       )}
     </div>
   );

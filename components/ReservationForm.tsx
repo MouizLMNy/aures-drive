@@ -3,6 +3,7 @@
 import { useState, type FormEvent } from "react";
 import { User, Phone, Calendar, Clock, Users, MessageSquare, MessageCircle } from "lucide-react";
 import { SITE } from "@/lib/site";
+import { POPULAR_PLACES } from "@/lib/content";
 import { AddressAutocomplete } from "./AddressAutocomplete";
 
 /**
@@ -106,6 +107,7 @@ export function ReservationForm() {
           placeholder="Adresse de départ"
           ariaLabel="Adresse de départ"
           required
+          quickPicks={POPULAR_PLACES}
         />
       </div>
 
@@ -117,6 +119,7 @@ export function ReservationForm() {
           placeholder="Adresse d'arrivée"
           ariaLabel="Adresse d'arrivée"
           required
+          quickPicks={POPULAR_PLACES}
         />
       </div>
 
