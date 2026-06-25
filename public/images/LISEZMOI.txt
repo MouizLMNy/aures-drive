@@ -44,7 +44,7 @@ place : le site reste donc impeccable même sans toutes les images.
 - Pour les destinations, privilégie des photos au format paysage
   ou carré, lumineuses et de bonne qualité.
 
-Après avoir ajouté tes photos :
+Après avoir ajouté tes photos :  
   1) lance "npm run build"
   2) re-téléverse le dossier /out sur Hostinger
 ============================================================

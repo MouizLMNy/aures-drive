@@ -5,12 +5,8 @@
 
 import {
   Plane,
-  TrainFront,
   Briefcase,
-  Sparkles,
-  Users,
   Clock4,
-  Camera,
   Route,
   type LucideIcon,
 } from "lucide-react";
@@ -27,20 +23,12 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
-    title: "Transfert aéroport",
+    title: "Transfert aéroport & gare",
     description:
-      "Prise en charge au terminal, pancarte nominative et suivi de votre vol en temps réel. Aéroport Marseille-Provence et toute la région, 24h/24.",
+      "Aéroport Marseille-Provence et gare Saint-Charles. Suivi de votre vol ou train en temps réel, accueil personnalisé et ponctualité garantie.",
     icon: Plane,
     whatsappMessage:
-      "Bonjour, je souhaite réserver un transfert aéroport avec Aures Drive.",
-  },
-  {
-    title: "Transfert gare",
-    description:
-      "Liaison ponctuelle depuis et vers la gare Saint-Charles. Suivi des horaires de train et prise en charge à quai facilitée.",
-    icon: TrainFront,
-    whatsappMessage:
-      "Bonjour, je souhaite réserver un transfert gare avec Aures Drive.",
+      "Bonjour, je souhaite réserver un transfert aéroport ou gare avec Aures Drive.",
   },
   {
     title: "Transport d'affaires",
@@ -51,36 +39,12 @@ export const SERVICES: Service[] = [
       "Bonjour, je souhaite réserver un transport d'affaires avec Aures Drive.",
   },
   {
-    title: "Événements & mariages",
-    description:
-      "Mariage, gala, soirée privée ou grande occasion. Véhicule élégant, chauffeur en tenue et service attentionné pour rendre votre journée parfaite.",
-    icon: Sparkles,
-    whatsappMessage:
-      "Bonjour, je souhaite organiser un transport événementiel (mariage / soirée) avec Aures Drive.",
-  },
-  {
-    title: "Transport de groupe",
-    description:
-      "Jusqu'à 8 passagers à bord de notre Mercedes V-Class spacieuse, avec grand coffre et climatisation. Idéal famille, collègues ou amis.",
-    icon: Users,
-    whatsappMessage:
-      "Bonjour, je souhaite réserver un transport de groupe avec Aures Drive.",
-  },
-  {
     title: "Mise à disposition",
     description:
       "Un chauffeur privatisé à l'heure, à la demi-journée ou à la journée complète, pour tous vos déplacements en toute liberté.",
     icon: Clock4,
     whatsappMessage:
       "Bonjour, je souhaite réserver une mise à disposition avec Aures Drive.",
-  },
-  {
-    title: "Visite touristique",
-    description:
-      "Découvrez Marseille et ses environs avec un chauffeur attentionné : Vieux-Port, Calanques, Cassis… Un circuit sur-mesure, à votre rythme.",
-    icon: Camera,
-    whatsappMessage:
-      "Bonjour, je souhaite réserver une visite touristique de Marseille avec Aures Drive.",
   },
   {
     title: "Longue distance",
@@ -102,8 +66,9 @@ export const SERVICES: Service[] = [
 export type Destination = { name: string; image: string };
 
 export const DESTINATIONS: Destination[] = [
+  { name: "Notre-Dame de la Garde", image: "/images/notredame.jpg" },
+  { name: "Cathédrale La Major", image: "/images/lamajor.jpg" },
   { name: "Gare Saint-Charles", image: "/images/saint-charles.jpg" },
-  { name: "Aéroport Marseille-Provence", image: "/images/aeroport.jpg" },
   { name: "Les Calanques", image: "/images/calanques.jpg" },
   { name: "Cassis", image: "/images/cassis.jpg" },
   { name: "La Ciotat", image: "/images/la-ciotat.jpg" },

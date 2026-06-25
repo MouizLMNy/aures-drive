@@ -216,7 +216,7 @@ export default function HomePage() {
               </p>
             </div>
           </Reveal>
-          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {DESTINATIONS.map((dest, i) => (
               <Reveal key={dest.name} delay={i * 60}>
                 <DestinationCard destination={dest} className="h-full" />
@@ -296,7 +296,7 @@ export default function HomePage() {
       >
         <div
           className="absolute inset-0 bg-cover bg-center opacity-20"
-          style={{ backgroundImage: "url(/images/calanques.jpg)" }}
+          style={{ backgroundImage: "url(/images/notredame.jpg)" }}
           aria-hidden="true"
         />
         <div className="bg-grid absolute inset-0 opacity-40" aria-hidden="true" />
