@@ -316,10 +316,16 @@ export default function HomePage() {
       </section>
 
       {/* ════════════════ 5. AVIS CLIENTS ════════════════ */}
-      <section id="avis" className="scroll-mt-24 bg-navy-50/60 py-20 sm:py-28">
-        <Container>
+      <section id="avis" className="relative scroll-mt-24 overflow-hidden bg-gradient-navy py-20 sm:py-28">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: "url(/images/lamajor.jpg)" }}
+          aria-hidden="true"
+        />
+        <div className="bg-grid absolute inset-0 opacity-40" aria-hidden="true" />
+        <Container className="relative">
           <Reveal>
-            <SectionHeading eyebrow={t.reviews.eyebrow} title={t.reviews.title} subtitle={t.reviews.subtitle} />
+            <SectionHeading eyebrow={t.reviews.eyebrow} title={t.reviews.title} subtitle={t.reviews.subtitle} variant="light" />
           </Reveal>
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {t.reviews.texts.map((text, i) => (
@@ -344,6 +350,11 @@ export default function HomePage() {
 
       {/* ════════════════ 6. CONTACT ════════════════ */}
       <section id="contact" className="relative scroll-mt-24 overflow-hidden bg-gradient-azur py-20 sm:py-28">
+        <div
+          className="absolute inset-0 bg-cover bg-center opacity-15"
+          style={{ backgroundImage: "url(/images/calanques.jpg)" }}
+          aria-hidden="true"
+        />
         <div className="pointer-events-none absolute inset-0 opacity-30">
           <div className="absolute -left-20 top-0 h-72 w-72 rounded-full bg-white/20 blur-3xl" />
           <div className="absolute -right-10 bottom-0 h-80 w-80 rounded-full bg-azur-300/30 blur-3xl" />
