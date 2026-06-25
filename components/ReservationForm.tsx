@@ -5,13 +5,19 @@ import { User, Phone, Calendar, Clock, Users, MessageSquare, MessageCircle } fro
 import { SITE } from "@/lib/site";
 import { POPULAR_PLACES } from "@/lib/content";
 import { AddressAutocomplete } from "./AddressAutocomplete";
+import { useI18n } from "./LanguageProvider";
 
 /**
  * Formulaire de réservation. Aucune donnée n'est envoyée à un serveur :
  * les champs sont compilés en un message WhatsApp clair et professionnel,
  * puis WhatsApp s'ouvre directement avec la demande de réservation.
+ *
+ * ⚠️ Le message WhatsApp reste en FRANÇAIS quelle que soit la langue du site
+ * (c'est le gérant qui le reçoit). Seuls les libellés affichés sont traduits.
  */
 export function ReservationForm() {
+  const { t } = useI18n();
+
   const [form, setForm] = useState({
     nom: "",
     telephone: "",
@@ -26,12 +32,17 @@ export function ReservationForm() {
   const set = (key: keyof typeof form, value: string) =>
     setForm((f) => ({ ...f, [key]: value }));
 
-  // Formate "2026-07-12" -> "12/07/2026" pour le message.
   const formatDate = (iso: string) => {
     if (!iso) return "À définir";
     const [y, m, d] = iso.split("-");
     return `${d}/${m}/${y}`;
   };
+
+  // Lieux fréquents : libellé traduit, adresse complète (FR) conservée.
+  const quickPicks = POPULAR_PLACES.map((p, i) => ({
+    short: t.places[i] ?? p.short,
+    full: p.full,
+  }));
 
   const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -56,9 +67,7 @@ export function ReservationForm() {
       "Merci de confirmer cette réservation.",
     ].join("\n");
 
-    const url = `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(
-      message
-    )}`;
+    const url = `https://wa.me/${SITE.whatsappNumber}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
   };
 
@@ -66,11 +75,7 @@ export function ReservationForm() {
     "w-full rounded-xl border border-navy-200 bg-white py-3 pl-11 pr-4 text-sm text-navy placeholder:text-navy-400 transition-colors focus:border-azur-400 focus:outline-none focus:ring-2 focus:ring-azur-100";
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className="grid gap-4 sm:grid-cols-2"
-      aria-label="Formulaire de réservation"
-    >
+    <form onSubmit={handleSubmit} className="grid gap-4 sm:grid-cols-2" aria-label="Réservation">
       {/* Nom */}
       <div className="relative">
         <User className="pointer-events-none absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-azur-500" />
@@ -79,9 +84,9 @@ export function ReservationForm() {
           required
           value={form.nom}
           onChange={(e) => set("nom", e.target.value)}
-          placeholder="Votre nom"
+          placeholder={t.form.name}
           className={fieldClass}
-          aria-label="Votre nom"
+          aria-label={t.form.name}
         />
       </div>
 
@@ -93,33 +98,33 @@ export function ReservationForm() {
           required
           value={form.telephone}
           onChange={(e) => set("telephone", e.target.value)}
-          placeholder="Votre téléphone"
+          placeholder={t.form.phone}
           className={fieldClass}
-          aria-label="Votre téléphone"
+          aria-label={t.form.phone}
         />
       </div>
 
-      {/* Départ (autocomplétion) */}
+      {/* Départ */}
       <div className="sm:col-span-2">
         <AddressAutocomplete
           value={form.depart}
           onChange={(v) => set("depart", v)}
-          placeholder="Adresse de départ"
-          ariaLabel="Adresse de départ"
+          placeholder={t.form.depart}
+          ariaLabel={t.form.depart}
           required
-          quickPicks={POPULAR_PLACES}
+          quickPicks={quickPicks}
         />
       </div>
 
-      {/* Arrivée (autocomplétion) */}
+      {/* Arrivée */}
       <div className="sm:col-span-2">
         <AddressAutocomplete
           value={form.arrivee}
           onChange={(v) => set("arrivee", v)}
-          placeholder="Adresse d'arrivée"
-          ariaLabel="Adresse d'arrivée"
+          placeholder={t.form.arrivee}
+          ariaLabel={t.form.arrivee}
           required
-          quickPicks={POPULAR_PLACES}
+          quickPicks={quickPicks}
         />
       </div>
 
@@ -154,11 +159,11 @@ export function ReservationForm() {
           value={form.passagers}
           onChange={(e) => set("passagers", e.target.value)}
           className={`${fieldClass} appearance-none`}
-          aria-label="Nombre de passagers"
+          aria-label={t.form.passengers(1)}
         >
           {[1, 2, 3, 4, 5, 6, 7, 8].map((n) => (
             <option key={n} value={String(n)}>
-              {n} passager{n > 1 ? "s" : ""}
+              {t.form.passengers(n)}
             </option>
           ))}
         </select>
@@ -170,10 +175,10 @@ export function ReservationForm() {
         <textarea
           value={form.infos}
           onChange={(e) => set("infos", e.target.value)}
-          placeholder="Informations complémentaires (bagages, vol, siège enfant…)"
+          placeholder={t.form.infos}
           rows={3}
           className="w-full resize-none rounded-xl border border-navy-200 bg-white py-3 pl-11 pr-4 text-sm text-navy placeholder:text-navy-400 transition-colors focus:border-azur-400 focus:outline-none focus:ring-2 focus:ring-azur-100"
-          aria-label="Informations complémentaires"
+          aria-label={t.form.infos}
         />
       </div>
 
@@ -183,12 +188,10 @@ export function ReservationForm() {
         className="sm:col-span-2 inline-flex items-center justify-center gap-2.5 rounded-xl bg-[#25D366] px-6 py-3.5 text-base font-semibold text-white shadow-premium transition-all hover:bg-[#1ebe5b] hover:shadow-premium-lg"
       >
         <MessageCircle className="h-5 w-5" />
-        Envoyer ma réservation sur WhatsApp
+        {t.form.submit}
       </button>
 
-      <p className="sm:col-span-2 text-center text-xs text-navy-400">
-        Réponse rapide · Devis sans engagement · Aucune application à installer
-      </p>
+      <p className="sm:col-span-2 text-center text-xs text-navy-400">{t.form.note}</p>
     </form>
   );
 }

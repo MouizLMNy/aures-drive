@@ -5,20 +5,23 @@ import { Menu, X, Phone } from "lucide-react";
 import { Logo } from "./Logo";
 import { Container } from "./Container";
 import { WhatsAppButton } from "./WhatsAppButton";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useI18n } from "./LanguageProvider";
 import { SITE } from "@/lib/site";
 
-const NAV = [
-  { label: "Accueil", href: "/#accueil" },
-  { label: "Services", href: "/#services" },
-  { label: "Tarifs", href: "/#tarifs" },
-  { label: "Aures Tour", href: "/#aures-tour" },
-  { label: "Avis", href: "/#avis" },
-  { label: "Contact", href: "/#contact" },
-];
-
 export function Header() {
+  const { t } = useI18n();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+
+  const NAV = [
+    { label: t.nav.accueil, href: "/#accueil" },
+    { label: t.nav.services, href: "/#services" },
+    { label: t.nav.tarifs, href: "/#tarifs" },
+    { label: t.nav.auresTour, href: "/#aures-tour" },
+    { label: t.nav.avis, href: "/#avis" },
+    { label: t.nav.contact, href: "/#contact" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -38,7 +41,7 @@ export function Header() {
       <Container className="flex h-20 items-center justify-between">
         <Logo variant="light" />
 
-        <nav className="hidden items-center gap-1 lg:flex">
+        <nav className="hidden items-center gap-1 xl:flex">
           {NAV.map((item) => (
             <a
               key={item.href}
@@ -51,25 +54,22 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
-          <a
-            href={SITE.phoneHref}
-            className="inline-flex items-center gap-2 text-sm font-medium text-azur-100 transition-colors hover:text-white"
-          >
-            <Phone className="h-4 w-4" aria-hidden="true" />
-            {SITE.phoneDisplay}
-          </a>
-          <WhatsAppButton size="md">Réserver</WhatsAppButton>
+          <LanguageSwitcher variant="light" />
+          <WhatsAppButton size="md">{t.nav.reserver}</WhatsAppButton>
         </div>
 
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
-          aria-expanded={open}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10 lg:hidden"
-        >
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <LanguageSwitcher variant="light" />
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
+            aria-expanded={open}
+            className="inline-flex h-11 w-11 items-center justify-center rounded-lg text-white transition-colors hover:bg-white/10"
+          >
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </Container>
 
       {/* Menu mobile */}
@@ -98,7 +98,7 @@ export function Header() {
               {SITE.phoneDisplay}
             </a>
             <WhatsAppButton size="lg" className="w-full">
-              Réserver sur WhatsApp
+              {t.nav.reserver}
             </WhatsAppButton>
           </div>
         </Container>

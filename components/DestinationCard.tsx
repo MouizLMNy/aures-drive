@@ -8,9 +8,11 @@ import { type Destination } from "@/lib/content";
  */
 export function DestinationCard({
   destination,
+  served = "Desservi",
   className = "",
 }: {
   destination: Destination;
+  served?: string;
   className?: string;
 }) {
   return (
@@ -29,7 +31,7 @@ export function DestinationCard({
       <div className="relative flex h-full min-h-[200px] flex-col justify-end p-5">
         <span className="inline-flex w-fit items-center gap-1.5 rounded-full bg-white/10 px-3 py-1 text-xs font-medium text-white backdrop-blur">
           <MapPin className="h-3.5 w-3.5 text-azur-300" />
-          Desservi
+          {served}
         </span>
         <h3 className="mt-3 font-display text-lg font-bold text-white">
           {destination.name}

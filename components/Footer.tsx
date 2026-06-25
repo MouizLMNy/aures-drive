@@ -1,20 +1,25 @@
+"use client";
+
 import Link from "next/link";
 import { Phone, Mail, MapPin, Clock, MessageCircle } from "lucide-react";
 import { Container } from "./Container";
 import { Logo } from "./Logo";
+import { useI18n } from "./LanguageProvider";
 import { SITE, whatsappLink } from "@/lib/site";
 
 const YEAR = new Date().getFullYear();
 
-const QUICK_LINKS = [
-  { label: "Accueil", href: "/#accueil" },
-  { label: "Services", href: "/#services" },
-  { label: "Tarifs", href: "/#tarifs" },
-  { label: "Avis clients", href: "/#avis" },
-  { label: "Contact", href: "/#contact" },
-];
-
 export function Footer() {
+  const { t } = useI18n();
+
+  const quickLinks = [
+    { label: t.nav.accueil, href: "/#accueil" },
+    { label: t.nav.services, href: "/#services" },
+    { label: t.nav.tarifs, href: "/#tarifs" },
+    { label: t.footer.avis, href: "/#avis" },
+    { label: t.nav.contact, href: "/#contact" },
+  ];
+
   return (
     <footer className="relative overflow-hidden bg-gradient-navy text-azur-100">
       <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-azur-500/10 blur-3xl" />
@@ -24,8 +29,7 @@ export function Footer() {
           <div>
             <Logo variant="light" />
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-azur-100/80">
-              Chauffeur privé VTC premium à Marseille et alentours. Transferts,
-              déplacements pro et longue distance, 24h/24 et 7j/7.
+              {t.footer.tagline}
             </p>
             <a
               href={whatsappLink()}
@@ -34,17 +38,17 @@ export function Footer() {
               className="mt-6 inline-flex items-center gap-2 rounded-full bg-[#25D366] px-5 py-2.5 text-sm font-semibold text-white transition-transform hover:-translate-y-0.5"
             >
               <MessageCircle className="h-4 w-4" />
-              Réserver sur WhatsApp
+              {t.footer.whatsappBtn}
             </a>
           </div>
 
           {/* Navigation */}
           <div>
             <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
-              Navigation
+              {t.footer.navTitle}
             </h3>
             <ul className="mt-5 space-y-3 text-sm">
-              {QUICK_LINKS.map((l) => (
+              {quickLinks.map((l) => (
                 <li key={l.href}>
                   <a href={l.href} className="text-azur-100/80 transition-colors hover:text-white">
                     {l.label}
@@ -57,7 +61,7 @@ export function Footer() {
           {/* Contact */}
           <div>
             <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
-              Contact
+              {t.footer.contactTitle}
             </h3>
             <ul className="mt-5 space-y-4 text-sm">
               <li className="flex items-start gap-3">
@@ -74,11 +78,11 @@ export function Footer() {
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-azur-400" />
-                <span>Marseille &amp; alentours</span>
+                <span>{t.contact.zoneValue}</span>
               </li>
               <li className="flex items-start gap-3">
                 <Clock className="mt-0.5 h-4 w-4 shrink-0 text-azur-400" />
-                <span>{SITE.availability}</span>
+                <span>{t.availability}</span>
               </li>
             </ul>
           </div>
@@ -86,25 +90,22 @@ export function Footer() {
           {/* Légal */}
           <div>
             <h3 className="font-display text-sm font-semibold uppercase tracking-wider text-white">
-              Informations
+              {t.footer.infoTitle}
             </h3>
             <ul className="mt-5 space-y-3 text-sm">
               <li>
                 <Link href="/mentions-legales" className="text-azur-100/80 hover:text-white">
-                  Mentions légales
+                  {t.footer.legal}
                 </Link>
               </li>
               <li>
-                <Link
-                  href="/politique-de-confidentialite"
-                  className="text-azur-100/80 hover:text-white"
-                >
-                  Politique de confidentialité
+                <Link href="/politique-de-confidentialite" className="text-azur-100/80 hover:text-white">
+                  {t.footer.privacy}
                 </Link>
               </li>
               <li>
                 <Link href="/cgv" className="text-azur-100/80 hover:text-white">
-                  CGV
+                  {t.footer.terms}
                 </Link>
               </li>
             </ul>
@@ -113,7 +114,7 @@ export function Footer() {
 
         <div className="mt-14 border-t border-white/10 pt-8 text-center text-xs text-azur-100/60">
           <p>
-            © {YEAR} {SITE.name}. Tous droits réservés.
+            © {YEAR} {SITE.name}. {t.footer.rights}
           </p>
         </div>
       </Container>

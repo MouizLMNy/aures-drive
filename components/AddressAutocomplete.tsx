@@ -35,14 +35,16 @@ export function AddressAutocomplete({
   const [activeIndex, setActiveIndex] = useState(-1);
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const justSelected = useRef(false);
+  // Mémorise la dernière valeur choisie (chip ou suggestion) : on ne relance
+  // une recherche que lorsque l'utilisateur modifie réellement le champ.
+  const selectedValue = useRef<string | null>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout>>();
   const abortRef = useRef<AbortController>();
 
   // Recherche d'adresses (debounce 250 ms).
   useEffect(() => {
-    if (justSelected.current) {
-      justSelected.current = false;
+    // Valeur identique à celle qui vient d'être sélectionnée -> pas de recherche.
+    if (value === selectedValue.current) {
       return;
     }
     if (debounceRef.current) clearTimeout(debounceRef.current);
@@ -101,7 +103,7 @@ export function AddressAutocomplete({
   }, []);
 
   const select = (label: string) => {
-    justSelected.current = true;
+    selectedValue.current = label;
     onChange(label);
     setOpen(false);
     setSuggestions([]);
